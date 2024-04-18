@@ -3,6 +3,8 @@ def create_matrix():
     for i in range(10):
         matrix[i][i] = 1
     return matrix
+
+
 def write_matrix(matriz, file_name):
     with open(file_name, "w") as f:
         for linha in matriz:
