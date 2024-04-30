@@ -1,53 +1,96 @@
 import sqlite3
 
-con = sqlite3.connect('users.db')
-cur = con.cursor()
 
+def connect_db():
+    try:
+        con = sqlite3.connect('ginasios.db')
+        cur = con.cursor()
+        return con, cur
+    except Exception as e:
+        print(f"Erro ao conectar ao banco de dados: {e}")
+        exit()
 
-def create_table():
-    cur.execute('''CREATE TABLE IF NOT EXISTS users(id INTEGER PRIMARY KEY, name TEXT, age INTEGER)''')
-    con.commit()
+def create_table(con, cur):
+    try:
+        cur.execute('''CREATE TABLE IF NOT EXISTS ginasios(codigo_ginasio INTEGER PRIMARY KEY, localidade TEXT, num_atletas INTEGER, num_desportos INTEGER)''')
+        con.commit()
+        print("Tabela criada com sucesso!")
+    except Exception as e:
+        print(f"Erro ao criar tabela: {e}")
 
+def insert_data(con, cur):
+    while True:
+        try:
+            codigo_ginasio = int(input("Digite o código do ginásio: "))
+            local = input("Digite a localidade do ginásio: ")
+            num_atletas = int(input("Digite o número de atletas: "))
+            num_desportos = int(input("Digite o número de desportos: "))
 
-def insert_data():
-    nome = input('Digite o nome: ')
-    age = int(input('Digite a idade: '))
-    cur.execute("""INSERT INTO users (name, age) VALUES ('{}', {})""".format(nome, age))
-    con.commit()
-
-
-def list_data():
-    cur.execute("""SELECT * FROM users""")
-    for linha in cur.fetchall():
-        print(linha)
-
-
-def delete_data():
-    id = input('Digite o id do Utilizador a ser excluido: ')
-    cur.execute("""DELETE FROM users WHERE id = {}""".format(id))
-    con.commit()
-
-
-welcomeMessage = """
-Bem-vindo as operações do Caleb
-1 - Criar Tabela De Dados
-2 - Inserir Dados na Tabela
-3 - Listagem dos dados da Tabela
-4 - Eliminar Dados da Tabela
-5 - Sair do programa
-Escolha uma das opções acima: 
-"""
-while True:
-    match (input(welcomeMessage)):
-        case "1":
-            create_table()
-        case "2":
-            insert_data()
-        case "3":
-            list_data()
-        case "4":
-            delete_data()
-        case "5":
+            cur.execute(f"""INSERT INTO ginasios VALUES ({codigo_ginasio}, '{local}', {num_atletas}, {num_desportos})""")
+            con.commit()
+            print("Dados inseridos com sucesso!")
             break
-        case _:
-            print("Opção inválida escolha outra")
+        except ValueError as e:
+            print(f"Valor inválido: {e}")
+        except Exception as e:
+            print(f"Erro ao inserir dados: {e}")
+
+def list_data(con, cur):
+    try:
+        cur.execute("""SELECT * FROM ginasios""")
+        print("Listagem de Ginásios:")
+        for linha in cur.fetchall():
+            print(linha)
+    except Exception as e:
+        print(f"Erro ao listar dados: {e}")
+
+def delete_data(con, cur):
+    while True:
+        try:
+            id = int(input("Digite o ID do ginásio a ser excluído: "))
+
+            cur.execute(f"""DELETE FROM ginasios WHERE codigo_ginasio = {id}""")
+            con.commit()
+            print(f"Ginásio com ID {id} excluído com sucesso!")
+            break
+        except ValueError as e:
+            print(f"ID inválido: {e}")
+        except Exception as e:
+            print(f"Erro ao excluir dados: {e}")
+
+def main():
+    con, cur = connect_db()
+
+    while True:
+        print("\nMenu de Operações do Caleb:")
+        print("1 - Criar Tabela")
+        print("2 - Inserir Dados")
+        print("3 - Listar Dados")
+        print("4 - Eliminar Dados")
+        print("5 - Sair")
+    
+        try:
+            opcao = int(input("Escolha uma opção: "))
+    
+            if opcao == 1:
+                create_table(con, cur)
+            elif opcao == 2:
+                insert_data(con, cur)
+            elif opcao == 3:
+                list_data(con, cur)
+            elif opcao == 4:
+                delete_data(con, cur)
+            elif opcao == 5:
+                print("Saindo do programa...")
+                break
+            else:
+                print("Opção inválida. Tente novamente.")
+    
+        except ValueError as e:
+            print(f"Valor inválido: {e}")
+        except Exception as e:
+            print(f"Erro inesperado: {e}")
+    
+    con.close()
+if __name__ == "__main__":
+    main()
