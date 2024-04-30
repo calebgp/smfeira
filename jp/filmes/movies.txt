@@ -1,1 +1,0 @@
-{'title': 'Creed', 'director': 'Ryan Coogler', 'year': '2015', 'gender': 'a��o'}
