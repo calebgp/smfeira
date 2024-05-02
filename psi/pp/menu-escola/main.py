@@ -31,7 +31,7 @@ def connect_db():
 def create_table(con, cur):
     try:
         cur.execute(
-            '''CREATE TABLE IF NOT EXISTS students(code TEXT PRIMARY KEY, name TEXT, local TEXT, age INTEGER ,class TEXT, course TEXT)'''
+            '''CREATE TABLE IF NOT EXISTS students(code TEXT PRIMARY KEY, name TEXT, local TEXT, age INTEGER ,clss TEXT, course TEXT)'''
         )
         con.commit()
         print("Tabela criada com sucesso!")
@@ -59,7 +59,7 @@ def insert_data(con, cur):
             print(f"Valor inválido: {e}")
         except Exception as e:
             print(f"Erro ao inserir dados: {e}")
-        con.commit()
+    con.commit()
 
 
 def print_student(tup):
@@ -117,7 +117,7 @@ def list_by_class(con, cur):
         try:
             clss = input("Digite a turma dos alunos: ")
 
-            cur.execute(f"""SELECT * FROM students WHERE class = {clss}""")
+            cur.execute("SELECT * FROM students WHERE clss=?", (clss, ))
             print(f"Listagem de alunos da turma {clss}:")
             for linha in cur.fetchall():
                 print_student(linha)
@@ -134,7 +134,8 @@ def list_by_course(con, cur):
         try:
             course = input("Digite o curso dos alunos: ")
 
-            cur.execute(f"""SELECT * FROM students WHERE course = {course}""")
+            cur.execute("""SELECT * FROM students WHERE course=?""",
+                        (course, ))
             print(f"Listagem de alunos do curso {course}:")
             for linha in cur.fetchall():
                 print_student(linha)
@@ -187,14 +188,15 @@ def main():
         print("1 - Criar tabela")
         print("2 - Inserir aluno")
         print("3 - Listar alunos")
-        print("4 - Listar alunos ordenados pelo nome")
-        print("5 - Listar alunos de uma determinada turma")
-        print("6 - Listar alunos de um determinado curso")
+        print("4 - Listar nomes e idades dos alunos")
+        print("5 - Listar alunos ordenados pelo nome")
+        print("6 - Listar alunos de uma determinada turma")
+        print("7 - Listar alunos de um determinado curso")
         print(
-            "7 - Listar alunos com uma determinada sequência de caracteres no nome"
+            "8 - Listar alunos com uma determinada sequência de caracteres no nome"
         )
-        print("8 - Eliminar Alunos")
-        print("9 - Sair")
+        print("9 - Eliminar Alunos")
+        print("10 - Sair")
 
         try:
             opcao = int(input("Escolha uma opção: "))
@@ -205,18 +207,19 @@ def main():
                 insert_data(con, cur)
             elif opcao == 3:
                 list_data(con, cur)
-
             elif opcao == 4:
-                list_data_sorted_name(con, cur)
+                list_name_age(con, cur)
             elif opcao == 5:
-                list_by_class(con, cur)
+                list_data_sorted_name(con, cur)
             elif opcao == 6:
-                list_by_course(con, cur)
+                list_by_class(con, cur)
             elif opcao == 7:
-                list_by_query_name(con, cur)
+                list_by_course(con, cur)
             elif opcao == 8:
-                delete_data(con, cur)
+                list_by_query_name(con, cur)
             elif opcao == 9:
+                delete_data(con, cur)
+            elif opcao == 10:
                 print("Saindo do programa...")
                 break
             else:
