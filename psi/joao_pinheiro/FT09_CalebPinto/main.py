@@ -5,6 +5,8 @@ def is_prime(n):
             aux = False
             break
     return aux
+
+
 def process_data(names, values):
     data = {}
     for i, name in enumerate(names):

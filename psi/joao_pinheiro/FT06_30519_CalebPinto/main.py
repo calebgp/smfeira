@@ -19,9 +19,8 @@ def get_responses(filename):
     arr = []
     with open(filename, "r") as f:
         for line in f:
-            response = Response(*line.split(","))
+            response = Response(*line.strip().split(","))
             arr.append(response)
-            print(response)
         f.close()
     return arr
 
@@ -35,14 +34,31 @@ def calc_n_zombies(arr):
 
 
 def calc_n_mans_non_zombified_age_less_than_40(arr):
-    n_mans_non_zombified = 0
+    n = 0
     for response in arr:
-        if not response.is_zombie:
-            if response.age < 40:
-                n_mans_non_zombified += 1
+        if response.gender == "M":
+            if not response.is_zombie:
+                if response.age < 40:
+                    n += 1
+    return n
+
+
+def calc_n_women_zombified_age_more_than_40_and_vegan(arr):
+    n = 0
+    for response in arr:
+        if response.gender == "F":
+            if response.is_zombie:
+                if response.age > 40:
+                    if response.is_vegan:
+                        n += 1
+    return n
 
 
 responses = get_responses("questionario.txt")
 print(
     f"Percentual de zumbis em relação ao número total de pessoas entrevistadas: {(calc_n_zombies(responses) / len(responses)) * 100:.2f}%\n")
-print(f"Percentual de homens não zumbificados abaixo de 40 anos em relação ao número total de homens entrevistados: {calc_n_zombies(responses) / len(responses):.2f}%\n")
+print(
+    f"Percentual de homens não zumbificados abaixo de 40 anos em relação ao número total de homens entrevistados: {(calc_n_mans_non_zombified_age_less_than_40(responses) / len(responses)) * 100:.2f}%\n"
+)
+print(
+    f"Percentual de de mulheres zumbificadas acima de 40 anos, que são vegetarianas, em relação ao número total de mulheres entrevistadas: {(calc_n_women_zombified_age_more_than_40_and_vegan(responses) / len(responses)) * 100:.2f}%\n")
