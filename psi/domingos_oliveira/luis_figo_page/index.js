@@ -19,22 +19,21 @@ function updateActiveLink(path) {
 
 // Função para navegar sem recarregar a página e atualizar o URL
 function navigateTo(event, path) {
-    if (event) event.preventDefault(); // Previne o comportamento padrão de recarregar a página
-    history.pushState({}, "", path); // Atualiza o URL sem recarregar a página
+    event.preventDefault();
     loadPageFromPath(path); // Carrega o conteúdo correto baseado no novo URL
 }
 
 // Função para determinar o conteúdo a ser carregado baseado no caminho
 function loadPageFromPath(path) {
     switch (path) {
-        case "/contatos/":
+        case "/contatos":
             loadContent("/contatos");
             break;
-        case "/fundacao/":
+        case "/fundacao":
             console.log("Fundacao");
             loadContent("/fundacao");
             break;
-        case "/home/":
+        case "/home":
             loadContent("/home");
             break;
         default:

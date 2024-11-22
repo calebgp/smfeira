@@ -1,80 +1,65 @@
+<!DOCTYPE html>
 <html lang="pt">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Página Web de Luís Figo</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-        background-color: red;
-        padding-bottom: 60px;
-      }
-      .container {
-        max-width: 800px;
-        margin: auto;
-        padding: 20px;
-        border-radius: 8px;
-      }
-      h1,
-      h2,
-      h3,
-      p,
-      li {
-        list-style-type: none;
-        color: white;
-        text-align: center;
-      }
-      h4 {
-        color: red;
-      }
-
-
-      img {
-        border-radius: 20px;
-        width: 20%;
-        height: auto;
-      }
-    </style>
-  </head>
-
-  <body>
-    <div class="container">
-        <h1>Página Web de Luís Figo</h1>
-    <p>Foto: Real Madrid</p>
-    <img src="assets/luis-figo.jpg" alt="Luis figo no Real Madrid" />
-    <h2>Breve História deste jogador de futebol:</h2>
-    <p style="text-align: right">
-      Luís Filipe Madeira Caeiro Figo é um ex-futebolista português que atuava
-      como médio ou extremo.
-    </p>
-    <hr />
-    <p>
-      Considerado um dos maiores jogadores de todos os tempos, Figo venceu a
-      Bola de Ouro em 2000, o prêmio de Melhor Jogador do Mundo pela FIFA em
-      2001 e está incluído no FIFA 100. Wikipédia
-    </p>
-    <hr />
-    <h3>Detalhes Pessoais:</h3>
-    <ul>
-      <li>
-        <strong>Nascimento:</strong> 4 de novembro de 1972 (idade 51 anos),
-        Almada
-      </li>
-      <li><strong>Cônjuge:</strong> Helen Svedin (desde 2001)</li>
-      <li><strong>Filhas:</strong> Daniela Figo, Martina Figo, Stella Figo</li>
-      <li><strong>Pais:</strong> Antonio Caeiro Figo, Maria Joana Caeiro</li>
-      <li><strong>Posição:</strong> Médio</li>
-      <li><strong>Altura:</strong> 1,8 m</li>
-    </ul>
-    <hr />
-    <h3>Carreira:</h3>
-    <ul>
-      <li><strong>1989–1995:</strong> Sporting</li>
-      <li><strong>1995–2000:</strong> Barcelona</li>
-      <li><strong>2000–2005:</strong> Real Madrid</li>
-      <li><strong>2005–2009:</strong> Internazionale</li>
-    </ul>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página Web de Luís Figo</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <div class="header-content">
+      <nav>
+        <ul>
+          <li><a href="#historia">História</a></li>
+          <li><a href="#detalhes-pessoais">Detalhes Pessoais</a></li>
+          <li><a href="#carreira">Carreira</a></li>
+        </ul>
+      </nav>
     </div>
-  </body>
+  </header>
+
+  <main>
+    <section id="historia">
+      <h2>História</h2>
+      <article>
+        <img src="assets/luis-figo.jpg" alt="Luís Figo no Real Madrid">
+        <p>
+          Luís Filipe Madeira Caeiro Figo é um ex-futebolista português que atuava
+          como médio ou extremo. Considerado um dos maiores jogadores de todos os tempos,
+          Figo venceu a Bola de Ouro em 2000 e o prêmio de Melhor Jogador do Mundo pela FIFA em 2001.
+        </p>
+      </article>
+    </section>
+
+    <aside id="fatos-curiosos">
+      <h3>Fatos Curiosos</h3>
+      <ul>
+        <li>É casado com a modelo sueca Helen Svedin desde 2001.</li>
+        <li>Figo tem três filhas: Daniela, Martina e Stella.</li>
+      </ul>
+    </aside>
+
+    <section id="detalhes-pessoais">
+      <h2>Detalhes Pessoais</h2>
+      <ul >
+        <li><strong>Nascimento:</strong> 4 de novembro de 1972, Almada</li>
+        <li><strong>Altura:</strong> 1,8 m</li>
+        <li><strong>Posição:</strong> Médio</li>
+        <li><strong>Pais:</strong> Antonio Caeiro Figo, Maria Joana Caeiro</li>
+      </ul>
+    </section>
+
+    <section id="carreira">
+      <h2>Carreira</h2>
+      <ul>
+        <li><strong>1989–1995:</strong> Sporting</li>
+        <li><strong>1995–2000:</strong> Barcelona</li>
+        <li><strong>2000–2005:</strong> Real Madrid</li>
+        <li><strong>2005–2009:</strong> Internazionale</li>
+      </ul>
+    </section>
+  </main>
+
+</body>
 </html>
