@@ -1,0 +1,86 @@
+@charset "UTF-8";
+
+article,
+aside,
+header,
+main,
+nav,
+section {
+  display: block;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+li,
+a,
+p,
+article,
+aside {
+  padding: 0;
+  margin: 0;
+}
+
+.artigo1 {
+  text-align: justify;
+}
+
+/*.container-imagem {
+    text-align: center;
+  }
+  
+  img {
+    display: inline-block;
+  }
+    */
+
+#imagem_figo {
+  width: 400px;
+  display: flex;
+}
+
+.banner {
+  background-color: rgb(112, 102, 163);
+  color: white;
+  padding: 10px;
+}
+
+body {
+  width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f0f0f0;
+  font-family: Helvetica, Arial, Sans-serif;
+  font-size: 15px;
+}
+
+li {
+  display: inline;
+  padding: 10px;
+  font-family: Arial narrow, sans-serif;
+  text-size-adjust: 12;
+  font-weight: bold;
+}
+
+main {
+  width: 640px;
+  float: left;
+  margin-bottom: 10px;
+}
+
+aside {
+  width: 270px;
+  float: right;
+  padding: 20px;
+  margin-top: 10px;
+}
+footer {
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  padding: 5px 20px;
+  width: 100%;
+}

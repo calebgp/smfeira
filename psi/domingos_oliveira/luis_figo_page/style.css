@@ -1,237 +1,105 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: red;
-    padding-bottom: 60px;
-    margin: 0;
-}
-h1,
-h2,
-h3,
-p,
-li {
-    color: white;
-    text-align: center;
-}
-h4 {
-    color: red;
-}
-footer {
-    background-color: white;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    text-align: center;
-}
-.topnav {
-    overflow: hidden;
-    background-color: #fff;
-}
-.topnav a {
-    float: left;
-    color: #f00;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-.topnav a:hover {
-    background-color: #ddd;
-    color: #f00;
-}
-.topnav a.active {
-    background-color: red;
-    color: white;
-}
-#content {
-    margin-top: 20px;
-    padding: 20px;
-    color: #333;
-    border-radius: 8px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
+/* Estilo global */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  header {
-    background-color: #990000;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  header .header-content {
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  nav ul li {
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  article img {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px 0;
-    border-radius: 10px;
-  }
-  
-  aside {
-    background: #ffe6e6;
-    padding: 15px;
-    margin: 20px 0;
-    border-left: 5px solid #990000;
-    border-radius: 8px;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #990000;
-    color: white;
-    margin-top: 20px;
-  }
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    color: #333;
-    line-height: 1.6;
-  }
-  
-  header {
-    background-color: #990000;
-    color: white;
-    padding: 20px 0;
-    text-align: center;
-  }
-  
-  header .header-content {
-    max-width: 1200px;
-    margin: auto;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-  }
-  
-  nav ul li {
-    margin: 0 15px;
-  }
-  
-  nav ul li a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 18px;
-  }
-  
-  nav ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  main {
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
-  }
-  
-  section {
-    margin-bottom: 40px;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  article img {
-    width: 100%;
-    max-width: 400px;
-    margin: 20px 0;
-    border-radius: 10px;
-  }
-  
-  aside {
-    background: #ffe6e6;
-    padding: 15px;
-    margin: 20px 0;
-    border-left: 5px solid #990000;
-    border-radius: 8px;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 15px;
-    background-color: #990000;
-    color: white;
-    margin-top: 20px;
-  }
-  ul {
-    list-style-type: none;
-  }
-  #historia p { 
-    color: black;
-  }
-  #detalhes-pessoais li, h2 {
-    color: black;
-  }
-  #carreira li, h2 {
-    color: black;
-  }
-  #fatos-curiosos li, h3 {
-    color: black;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  line-height: 1.6;
+  display: flex; /* Para layout com barra lateral */
+  margin: 0;
+}
+
+/* Conteúdo principal */
+main {
+  flex: 1;
+  margin-left: 20%;
+  padding: 20px;
+  max-width: 1000px;
+}
+
+section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+  color: #990000;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+article img {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+aside {
+  background: #ffe6e6;
+  padding: 15px;
+  margin: 20px 0;
+  border-left: 5px solid #990000;
+  border-radius: 8px;
+}
+
+ul {
+  list-style-type: none;
+}
+
+/* Detalhes adicionais */
+#historia p,
+#detalhes-pessoais li,
+#carreira li,
+#fatos-curiosos li {
+  color: black;
+}
+
+#fatos-curiosos h3 {
+  color: #990000;
+}
+/* Cabeçalho e rodapé */
+header {
+  display: none; /* Ocultado para não conflitar com a navegação lateral */
+}
+
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #990000;
+  color: white;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+/* Top Navigation (se reutilizado no futuro) */
+
+nav a {
+  float: left;
+  color: #990000;
+  text-align: center;
+  padding: 12px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+nav a:hover {
+  background-color: #915d5d;
+  color: #990000;
+}
+
+nav a.active {
+  background-color: #990000;
+  color: #ffffff;
+}
