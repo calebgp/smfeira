@@ -30,8 +30,8 @@
     "id": 4,
     "name": "Gina Martins",
     "picturePath": "../images/blank.webp",
-    "subject": "Física",
-    "info": "Doutor em física teórica e amante da astrofísica.",
+    "subject": "Area de Integração",
+    "info": "...",
     "email":"gina.martins@ae-smfeira.pt",
     "age": 37
   },
@@ -40,17 +40,17 @@
     "name": "Maria Fátima Valente",
     "picturePath": "../images/blank.webp",
     "subject": "Inglês",
-    "info": "Entusiasta da literatura clássica e moderna.",
+    "info": "Diretora de turma.",
     "email": "maria.valente@ae-smfeira.pt",
     "age": 43
   },
   {
     "id": 6,
     "name": "Maria João Jesus",
-    "picturePath": "../images/blank.webp",
+    "picturePath": "../images/professores/mariajoao.jpg",
     "subject": "Matemática",
-    "info": "Adora ensinar química orgânica e inorgânica.",
-    "email": "antonio.braga@ae-smfeira.pt",
+    "info": "Adora ensinar matemática e usar analogias para melhor entendimento.",
+    "email": "mariajoao.jesus@ae-smfeira.pt",
     "age": 35
   },
   {
