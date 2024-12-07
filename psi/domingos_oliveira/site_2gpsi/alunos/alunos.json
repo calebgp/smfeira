@@ -1,0 +1,82 @@
+[
+  {
+    "id": 3,
+    "name": "Lucas Tavares",
+    "picturePath": "../images/alunos/tavares.png",
+    "info": "Amante da Janela",
+    "email": "lucastavares.25285@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 2,
+    "name": "João Rocha",
+    "picturePath": "../images/alunos/rocha.png",
+    "info": "O mais amado por todos os professores",
+    "email": "joaorocha.30299@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 1,
+    "name": "Caleb Pinto",
+    "picturePath": "../images/alunos/caleb.png",
+    "info": "O preto mais lindo de todos",
+    "email": "calebpinto.30519@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 4,
+    "name": "Paulo Sá",
+    "picturePath": "../images/alunos/paulo.png",
+    "info": "O amador de rock",
+    "email": "paulosa.12348@ae-smfeira.pt",
+    "age": 17
+  },
+  {
+    "id": 5,
+    "name": "Santiago Barrocas",
+    "picturePath": "../images/alunos/santiago.png",
+    "info": "Informações sobre o aluno 5",
+    "email": "santiagobarrocas.12349@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 6,
+    "name": "Martin Sá",
+    "picturePath": "../images/alunos/martin.png",
+    "info": "Informações sobre o aluno 6",
+    "email": "martinsa.12350@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 7,
+    "name": "Rodrigo Pereira",
+    "picturePath":  "../images/blank.webp",
+    "info": "Informações sobre o aluno 8",
+    "email": "rodrigopereira.12351@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 8,
+    "name": "Hugo Sousa",
+    "picturePath": "../images/alunos/hugo.png",
+    "info": "Informações sobre o aluno 7",
+    "email": "hugosousa.12352@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 9,
+    "name": "Raul Heitor",
+    "picturePath": "../images/alunos/raul.png",
+    "info": "Informações sobre o aluno 9",
+    "email": "raulheitor.12353@ae-smfeira.pt",
+    "age": 16
+  },
+  {
+    "id": 10,
+    "name": "Danylo Petrash",
+    "picturePath":  "../images/blank.webp",
+    "info": "Informações sobre o aluno 10",
+    "email": "danylopetrash.12354@ae-smfeira.pt",
+    "age": 16
+  }
+]
