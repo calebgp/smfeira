@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "name": "Domingos Oliveira",
+    "picturePath": "../images/professores/domingos.png",
+    "subject": "Redes de Comunicação",
+    "info": "Professor de HTML e consultor imobiliário",
+    "email": "domingos.oliveira@ae-smfeira.pt",
+    "age": 34
+  },
+  {
+    "id": 2,
+    "name": "António Braga",
+    "picturePath": "../images/professores/braga.jpg",
+    "subject": "Sistemas Operativos",
+    "info": "Professor robô",
+    "email": "antonio.braga@ae-smfeira.pt",
+    "age": 41
+  },
+  {
+    "id": 3,
+    "name": "Paulo Bonifácio",
+    "picturePath": "../images/blank.webp",
+    "subject": "Programação e Sistemas de Informação",
+    "info": "Professor de programação",
+    "email": "paulo.boni@ae-smfeira.pt",
+    "age": 29
+  },
+  {
+    "id": 4,
+    "name": "Gina Martins",
+    "picturePath": "../images/blank.webp",
+    "subject": "Area de Integração",
+    "info": "...",
+    "email":"gina.martins@ae-smfeira.pt",
+    "age": 37
+  },
+  {
+    "id": 5,
+    "name": "Maria Fátima Valente",
+    "picturePath": "../images/blank.webp",
+    "subject": "Inglês",
+    "info": "Diretora de turma.",
+    "email": "maria.valente@ae-smfeira.pt",
+    "age": 43
+  },
+  {
+    "id": 6,
+    "name": "Maria João Jesus",
+    "picturePath": "../images/professores/mariajoao.jpg",
+    "subject": "Matemática",
+    "info": "Adora ensinar matemática e usar analogias para melhor entendimento.",
+    "email": "mariajoao.jesus@ae-smfeira.pt",
+    "age": 35
+  },
+  {
+    "id": 7,
+    "name": "Bruno Leite",
+    "picturePath": "../images/blank.webp",
+    "subject": "Arquitetura de Computadores",
+    "info": "Geógrafa apaixonada por cartografia e mudanças climáticas.",
+    "email": "bruno.leite@ae-smfeira.pt",
+    "age": 31
+  },
+  {
+    "id": 8,
+    "name": "José Vieira",
+    "picturePath": "../images/blank.webp",
+    "subject": "Educação Física",
+    "info": "Incentiva o esporte e treinamento funcional.",
+    "email": "jose.vieira@ae-smfeira.pt",
+    "age": 27
+  },
+  {
+    "id": 9,
+    "name": "Rita Silva",
+    "picturePath": "../images/professores/rita.jpg",
+    "subject": "TIC",
+    "info": "Amante de programação e tudo que envolve um computador.",
+    "email": "rita.silva@ae-smfeira.pt",
+    "age": 33
+  },
+  {
+    "id": 10,
+    "name": "Benjamin Silva",
+    "picturePath": "../images/blank.webp",
+    "subject": "Física ou Química",
+    "info": "Professor fascinado por quimica e fisica.",
+    "email": "benjamin.silva@ae-smfeira.pt",
+    "age": 38
+  },
+  {
+    "id": 11,
+    "name": "Nuno Vidal",
+    "picturePath": "../images/blank.webp",
+    "subject": "Português",
+    "info": "O conspiracionista",
+    "email": "nuno.vidal@ae-smfeira.pt",
+    "age": 38
+  }
+]
