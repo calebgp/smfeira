@@ -13,7 +13,7 @@
     "name": "António Braga",
     "picturePath": "../images/professores/braga.jpg",
     "subject": "Sistemas Operativos",
-    "info": "Professor robô",
+    "info": "Professor de SO (Sistemas Operativos) e diretor do curso.",
     "email": "antonio.braga@ae-smfeira.pt",
     "age": 41
   },
@@ -31,7 +31,7 @@
     "name": "Gina Martins",
     "picturePath": "../images/blank.webp",
     "subject": "Area de Integração",
-    "info": "...",
+    "info": "Professora de AI (Area de Integração) e professora favorita do Rocha.",
     "email":"gina.martins@ae-smfeira.pt",
     "age": 37
   },
@@ -58,7 +58,7 @@
     "name": "Bruno Leite",
     "picturePath": "../images/blank.webp",
     "subject": "Arquitetura de Computadores",
-    "info": "Geógrafa apaixonada por cartografia e mudanças climáticas.",
+    "info": "Professor de AC (Arquitetura Computacional) apaixonado por computadores.",
     "email": "bruno.leite@ae-smfeira.pt",
     "age": 31
   },
