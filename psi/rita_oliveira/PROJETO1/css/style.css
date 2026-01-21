@@ -1,0 +1,200 @@
+/* ===========================
+   Tema minimalista
+   =========================== */
+body {
+  font-family: "Inter", "Montserrat", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f8f9fa;
+  color: #222;
+}
+
+/* ===========================
+   Navbar
+   =========================== */
+.navbar {
+  background: linear-gradient(90deg, #ffcc00 60%, #388e3c 100%);
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2.5rem;
+  box-shadow: 0 2px 12px rgba(56, 142, 60, 0.08);
+  border-bottom: 0;
+}
+
+.navbar .logo img {
+  max-height: 48px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #d32f2f44;
+}
+
+.navbar .nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.navbar .nav-links a:hover {
+  background: #d32f2f;
+  color: #fffbe6;
+}
+
+/* ===========================
+   Header
+   =========================== */
+header {
+  background: linear-gradient(120deg, #ffcc00 60%, #d32f2f 100%);
+  color: #fff;
+  text-align: center;
+  padding: 4rem 2rem 2rem 2rem;
+  position: relative;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  box-shadow: 0 4px 24px rgba(211, 47, 47, 0.08);
+}
+header h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+header p {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* ===========================
+   Container do grid
+   =========================== */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ===========================
+   Cada item do grid
+   =========================== */
+.grid-item {
+  background: linear-gradient(135deg, #fffbe6 60%, #ffcc00 100%);
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(56, 142, 60, 0.1);
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.grid-item:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(211, 47, 47, 0.18);
+}
+.grid-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px #388e3c44;
+}
+.grid-item h3 {
+  color: #d32f2f;
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.grid-item p {
+  color: #222;
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+/* ===========================
+   Botão minimalista
+   =========================== */
+.btn {
+  background: #388e3c;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(56, 142, 60, 0.08);
+  letter-spacing: 0.5px;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.btn:hover {
+  background: #2e7030;
+  color: #fff;
+  transform: scale(1.04);
+  box-shadow: 0 2px 8px #388e3c22;
+}
+.btn .icon {
+  font-size: 1.1em;
+}
+
+/* ===========================
+   Footer moderno
+   =========================== */
+footer {
+  background: linear-gradient(90deg, #388e3c 60%, #ffcc00 100%);
+  color: #fff;
+  text-align: center;
+  padding: 2rem 0 1rem 0;
+  font-size: 1.1rem;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  box-shadow: 0 -2px 12px rgba(56, 142, 60, 0.08);
+}
+footer p {
+  margin: 0;
+}
+
+/* ===========================
+   Responsividade
+   =========================== */
+@media (max-width: 700px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
+  }
+  .grid-container {
+    padding: 1.5rem 0.5rem;
+    gap: 1.2rem;
+  }
+  header {
+    padding: 2.5rem 1rem 1.5rem 1rem;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+  footer {
+    padding: 1.2rem 0 0.7rem 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+}

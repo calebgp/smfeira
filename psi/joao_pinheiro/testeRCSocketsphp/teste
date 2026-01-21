@@ -1,0 +1,23 @@
+<?php
+$sock_serv = #1 _______________________________________;  
+#2 _______________________________________;  
+#3 _______________________________________;  
+echo "Servidor espera cliente!\n";
+$sock_cliente = #4 ___________________________________;  
+$op1 = #5 ___________________________________;  
+$op2 = #6 ___________________________________;  
+$oper = #7 ___________________________________;  
+echo "Dados recebidos do cliente:\n";  
+#8 ___________________________________;  
+
+switch (#9 _______) {
+    case 1: $res = $op1 + $op2; break;
+    case 2: $res = $op1 - $op2; break;
+    case 3: $res = $op1 * $op2; break;
+    case 4: $res = $op1 / $op2; break;
+    default: $res = "(Erro: operador inválido!)";
+}
+
+echo "Resultado enviado para o cliente: ".$res;
+socket_write($sock_cliente, #10 ________________________);
+?>

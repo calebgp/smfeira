@@ -1,0 +1,11 @@
+/* ===========================
+   Foto do Autor
+   =========================== */
+.foto-autor {
+  width: 160px;
+  height: 160px;
+  border-radius: 24px;
+  object-fit: cover;
+  box-shadow: 0 1px 4px #388e3c22;
+  display: block;
+}
