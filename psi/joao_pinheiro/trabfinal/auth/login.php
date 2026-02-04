@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 iniciar_sessao();
 
@@ -17,10 +18,7 @@ $titulo_pagina = 'Login';
 $erro = '';
 $username = '';
 
-// Gerar token CSRF
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
-}
+// Gerar token CSRF apenas se não existir
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -56,9 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erro = 'Usuário ou senha incorretos.';
             }
         }
-        
-        // Regenerar token CSRF após submissão
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }
 ?>
@@ -277,7 +272,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
                             <input type="text" class="form-control" id="username" name="username" 
                                    placeholder="Digite seu usuário" required 
-                                   value="<?php echo htmlspecialchars($username); ?>" autocomplete="username">
+                                   value="<?php echo e($username); ?>" autocomplete="username">
                         </div>
                     </div>
                     

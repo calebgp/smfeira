@@ -69,14 +69,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const originalText = btn.innerHTML;
         btn.innerHTML =
           '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Processando...';
-        btn.disabled = true;
         btn.classList.add("loading");
 
-        // Reabilitar após 30 segundos (fallback)
+        // Reabilitar após 30 segundos (fallback) - mas o form já terá sido submetido
         setTimeout(function () {
           if (btn.classList.contains("loading")) {
             btn.innerHTML = originalText;
-            btn.disabled = false;
             btn.classList.remove("loading");
           }
         }, 30000);

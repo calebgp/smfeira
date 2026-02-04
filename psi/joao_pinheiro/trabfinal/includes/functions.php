@@ -150,12 +150,14 @@ function criar_fornecedor($dados) {
  * Atualizar fornecedor
  */
 function atualizar_fornecedor($id, $dados) {
+    
     global $pdo;
     
     $sql = "UPDATE fornecedores SET 
             nome = ?, contato = ?, email = ?, telefone = ?, endereco = ?, 
             cidade = ?, estado = ?, pais = ?, observacoes = ?, status = ?
             WHERE id = ?";
+    error_log("Tentando atualizar fornecedor no banco de dados com ID: $id, sql: $sql");
     
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
@@ -355,6 +357,13 @@ function formatar_moeda($valor) {
  */
 function sanitizar($dado) {
     return htmlspecialchars(trim($dado ?? ''), ENT_QUOTES, 'UTF-8');
+}
+
+/**
+ * Escape para HTML (trata null)
+ */
+function e($dado) {
+    return htmlspecialchars($dado ?? '', ENT_QUOTES, 'UTF-8');
 }
 
 /**

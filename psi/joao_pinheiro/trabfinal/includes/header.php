@@ -20,7 +20,7 @@
     ?>
     <?php if (esta_logado()): ?>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="<?php echo SITE_URL; ?>/dashboard.php">
                 <i class="bi bi-box-seam me-2 fs-4"></i>
@@ -53,6 +53,11 @@
                             <li><a class="dropdown-item" href="<?php echo SITE_URL; ?>/produtos/"><i class="bi bi-list me-2"></i>Listar Produtos</a></li>
                             <li><a class="dropdown-item" href="<?php echo SITE_URL; ?>/produtos/criar.php"><i class="bi bi-plus-circle me-2"></i>Novo Produto</a></li>
                         </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) === 'manual.php' ? 'active' : ''; ?>" href="<?php echo SITE_URL; ?>/manual.php">
+                            <i class="bi bi-book me-1"></i>Manual
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">

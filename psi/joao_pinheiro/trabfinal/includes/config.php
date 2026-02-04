@@ -4,8 +4,11 @@
  * Sistema de Gestão de Produtos e Fornecedores
  */
 
+// Suprimir warnings de deprecated para PHP 8.1+
+error_reporting(E_ALL & ~E_DEPRECATED & ~E_USER_DEPRECATED);
+
 // URL do site (sem barra no final)
-define('SITE_URL', 'http://localhost/PROJETO_CRUD_PHP');
+define('SITE_URL', 'http://localhost:8000');
 
 // Configurações do Banco de Dados
 define('DB_HOST', 'localhost');        // Host do servidor MySQL

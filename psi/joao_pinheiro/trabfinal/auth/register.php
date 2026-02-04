@@ -5,6 +5,7 @@
  */
 
 require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/../includes/functions.php';
 
 iniciar_sessao();
 
@@ -17,7 +18,7 @@ $titulo_pagina = 'Cadastre-se';
 $erro = '';
 $sucesso = '';
 
-// Gerar token CSRF
+// Gerar token CSRF apenas se não existir
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -57,14 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt->execute([$username, $email, $password_hash]);
                 
                 $sucesso = 'Conta criada com sucesso! Agora você pode fazer login.';
-                
-                // Regenerar token após sucesso
-                $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
             }
         }
-        
-        // Regenerar token CSRF após submissão
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }
 ?>
@@ -303,7 +298,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <span class="input-group-text"><i class="bi bi-person"></i></span>
                                 <input type="text" class="form-control" id="username" name="username" 
                                        placeholder="Escolha um nome de usuário" required 
-                                       value="<?php echo htmlspecialchars($username ?? ''); ?>" autocomplete="username">
+                                       value="<?php echo e($username ?? ''); ?>" autocomplete="username">
                             </div>
                             <div class="form-text">Mínimo de 3 caracteres</div>
                         </div>
@@ -316,7 +311,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                                 <input type="email" class="form-control" id="email" name="email" 
                                        placeholder="Seu melhor e-mail" required 
-                                       value="<?php echo htmlspecialchars($email ?? ''); ?>" autocomplete="email">
+                                       value="<?php echo e($email ?? ''); ?>" autocomplete="email">
                             </div>
                         </div>
                         

@@ -10,7 +10,7 @@
                 </div>
                 <div class="col-md-6 text-md-end">
                     <p class="text-white-50 mb-0">Desenvolvido para fins educacionais</p>
-                    <p class="text-white-50 mb-0">&copy; 2024 - Todos os direitos reservados</p>
+                    <p class="text-white-50 mb-0">&copy; 2026 - Caleb Pinto - Todos os direitos reservados</p>
                 </div>
             </div>
         </div>

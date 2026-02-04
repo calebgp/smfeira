@@ -14,8 +14,9 @@ if (!esta_logado()) {
 
 $titulo_pagina = 'Novo Fornecedor';
 $erro = '';
+$sucesso = '';
 
-// Gerar token CSRF
+// Gerar token CSRF apenas se não existir
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -51,9 +52,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erro = 'Erro ao criar fornecedor. Por favor, tente novamente.';
             }
         }
-        
-        // Regenerar token CSRF após submissão
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }
 ?>
@@ -104,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" id="nome" name="nome" 
                                placeholder="Digite o nome do fornecedor" required 
-                               value="<?php echo htmlspecialchars($dados['nome'] ?? ''); ?>">
+                               value="<?php echo e($dados['nome'] ?? ''); ?>">
                     </div>
                     
                     <!-- Contato -->
@@ -114,7 +112,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" id="contato" name="contato" 
                                placeholder="Nome da pessoa de contato"
-                               value="<?php echo htmlspecialchars($dados['contato'] ?? ''); ?>">
+                               value="<?php echo e($dados['contato'] ?? ''); ?>">
                     </div>
                     
                     <!-- E-mail -->
@@ -126,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
                             <input type="email" class="form-control" id="email" name="email" 
                                    placeholder="email@fornecedor.com"
-                                   value="<?php echo htmlspecialchars($dados['email'] ?? ''); ?>">
+                                   value="<?php echo e($dados['email'] ?? ''); ?>">
                         </div>
                     </div>
                     
@@ -139,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <span class="input-group-text"><i class="bi bi-phone"></i></span>
                             <input type="text" class="form-control" id="telefone" name="telefone" 
                                    placeholder="(00) 00000-0000"
-                                   value="<?php echo htmlspecialchars($dados['telefone'] ?? ''); ?>">
+                                   value="<?php echo e($dados['telefone'] ?? ''); ?>">
                         </div>
                     </div>
                     
@@ -150,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" id="endereco" name="endereco" 
                                placeholder="Rua, número, complemento..."
-                               value="<?php echo htmlspecialchars($dados['endereco'] ?? ''); ?>">
+                               value="<?php echo e($dados['endereco'] ?? ''); ?>">
                     </div>
                     
                     <!-- Cidade -->
@@ -160,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" id="cidade" name="cidade" 
                                placeholder="Digite a cidade"
-                               value="<?php echo htmlspecialchars($dados['cidade'] ?? ''); ?>">
+                               value="<?php echo e($dados['cidade'] ?? ''); ?>">
                     </div>
                     
                     <!-- Estado -->
@@ -170,7 +168,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </label>
                         <input type="text" class="form-control" id="estado" name="estado" 
                                placeholder="UF"
-                               value="<?php echo htmlspecialchars($dados['estado'] ?? ''); ?>" maxlength="2">
+                               value="<?php echo e($dados['estado'] ?? ''); ?>" maxlength="2">
                     </div>
                     
                     <!-- País -->
@@ -179,7 +177,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <i class="bi bi-globe me-1"></i>País
                         </label>
                         <input type="text" class="form-control" id="pais" name="pais" 
-                               value="<?php echo htmlspecialchars($dados['pais'] ?? 'Brasil'); ?>">
+                               value="<?php echo e($dados['pais'] ?? 'Brasil'); ?>">
                     </div>
                     
                     <!-- Observações -->
@@ -188,7 +186,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <i class="bi bi-text-paragraph me-1"></i>Observações
                         </label>
                         <textarea class="form-control" id="observacoes" name="observacoes" rows="4" 
-                                  placeholder="Informações adicionais sobre o fornecedor..."><?php echo htmlspecialchars($dados['observacoes'] ?? ''); ?></textarea>
+                                  placeholder="Informações adicionais sobre o fornecedor..."><?php echo e($dados['observacoes'] ?? ''); ?></textarea>
                     </div>
                     
                     <!-- Status -->

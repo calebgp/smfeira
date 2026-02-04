@@ -142,9 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                                 </div>
                                             </div>
                                             <div>
-                                                <strong><?php echo htmlspecialchars($fornecedor['nome']); ?></strong>
+                                                <strong><?php echo e($fornecedor['nome']); ?></strong>
                                                 <?php if ($fornecedor['email']): ?>
-                                                    <br><small class="text-muted"><?php echo htmlspecialchars($fornecedor['email']); ?></small>
+                                                    <br><small class="text-muted"><?php echo e($fornecedor['email']); ?></small>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -153,13 +153,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                         <?php if ($fornecedor['contato']): ?>
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-person text-muted me-2"></i>
-                                                <span><?php echo htmlspecialchars($fornecedor['contato']); ?></span>
+                                                <span><?php echo e($fornecedor['contato']); ?></span>
                                             </div>
                                         <?php endif; ?>
                                         <?php if ($fornecedor['telefone']): ?>
                                             <div class="d-flex align-items-center mt-1">
                                                 <i class="bi bi-phone text-muted me-2"></i>
-                                                <span class="text-muted"><?php echo htmlspecialchars($fornecedor['telefone']); ?></span>
+                                                <span class="text-muted"><?php echo e($fornecedor['telefone']); ?></span>
                                             </div>
                                         <?php endif; ?>
                                     </td>
@@ -167,10 +167,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                         <?php if ($fornecedor['cidade'] || $fornecedor['estado']): ?>
                                             <div class="d-flex align-items-center">
                                                 <i class="bi bi-geo-alt text-muted me-2"></i>
-                                                <span><?php echo htmlspecialchars($fornecedor['cidade'] . ' - ' . $fornecedor['estado']); ?></span>
+                                                <span><?php echo e($fornecedor['cidade'] . ' - ' . $fornecedor['estado']); ?></span>
                                             </div>
                                             <?php if ($fornecedor['pais'] && $fornecedor['pais'] !== 'Brasil'): ?>
-                                                <small class="text-muted"><?php echo htmlspecialchars($fornecedor['pais']); ?></small>
+                                                <small class="text-muted"><?php echo e($fornecedor['pais']); ?></small>
                                             <?php endif; ?>
                                         <?php else: ?>
                                             <span class="text-muted">-</span>
@@ -191,41 +191,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </div>
-                                        
-                                        <!-- Modal de Exclusão -->
-                                        <div class="modal fade" id="excluirModal<?php echo $fornecedor['id']; ?>" tabindex="-1" aria-labelledby="excluirModalLabel<?php echo $fornecedor['id']; ?>" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="excluirModalLabel<?php echo $fornecedor['id']; ?>">
-                                                            <i class="bi bi-exclamation-triangle text-danger me-2"></i>Confirmar Exclusão
-                                                        </h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Tem certeza que deseja excluir o fornecedor <strong><?php echo htmlspecialchars($fornecedor['nome']); ?></strong>?</p>
-                                                        <div class="alert alert-warning mb-0">
-                                                            <i class="bi bi-info-circle me-2"></i>
-                                                            Os produtos vinculados a este fornecedor ficarão sem fornecedor.
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                                            <i class="bi bi-x-lg me-1"></i>Cancelar
-                                                        </button>
-                                                        <form method="POST" class="d-inline">
-                                                            <input type="hidden" name="id" value="<?php echo $fornecedor['id']; ?>">
-                                                            <input type="hidden" name="excluir" value="1">
-                                                            <button type="submit" class="btn btn-danger">
-                                                                <i class="bi bi-trash me-1"></i>Confirmar Exclusão
-                                                            </button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
+                                
+                                <!-- Modal de Exclusão -->
+                                <div class="modal fade" id="excluirModal<?php echo $fornecedor['id']; ?>" tabindex="-1" aria-labelledby="excluirModalLabel<?php echo $fornecedor['id']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="excluirModalLabel<?php echo $fornecedor['id']; ?>">
+                                                    <i class="bi bi-exclamation-triangle text-danger me-2"></i>Confirmar Exclusão
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Tem certeza que deseja excluir o fornecedor <strong><?php echo e($fornecedor['nome']); ?></strong>?</p>
+                                                <div class="alert alert-warning mb-0">
+                                                    <i class="bi bi-info-circle me-2"></i>
+                                                    Os produtos vinculados a este fornecedor ficarão sem fornecedor.
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bi bi-x-lg me-1"></i>Cancelar
+                                                </button>
+                                                <form method="POST" class="d-inline">
+                                                    <input type="hidden" name="id" value="<?php echo $fornecedor['id']; ?>">
+                                                    <input type="hidden" name="excluir" value="1">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash me-1"></i>Confirmar Exclusão
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

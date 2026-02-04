@@ -6,7 +6,7 @@ USE gestao_produtos;
 
 -- Inserir usuário administrador padrão
 INSERT INTO usuarios (username, email, password) VALUES 
-('admin', 'admin@email.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
+('admin', 'admin@email.com', '$2a$12$9zJbgwty0WHc3sRILLDVbuOp1yG5T9QQdX5Ufu.7YwZGqdOhDE4Cm');
 
 -- Inserir fornecedores de exemplo
 INSERT INTO fornecedores (nome, contato, email, telefone, endereco, cidade, estado, pais, status) VALUES

@@ -4,15 +4,15 @@
  * Sistema de Gestão de Produtos e Fornecedores
  */
 
-require_once __DIR__ . '/../includes/config.php';
+require_once __DIR__ . '/includes/config.php';
+require_once __DIR__ . '/includes/functions.php';
 
 // Verificar autenticação
 if (!esta_logado()) {
     redirecionar('/auth/login.php');
 }
 
-require_once __DIR__ . '/../includes/functions.php';
-
+$titulo_pagina = 'Dashboard';
 $usuario = obter_usuario();
 $stats = obter_estatisticas();
 $produtos_recentes = obter_produtos();
@@ -22,7 +22,7 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
 
 ?>
 
-<?php include_once __DIR__ . '/../includes/header.php'; ?>
+<?php include_once __DIR__ . '/includes/header.php'; ?>
 
 <div class="container-fluid px-4">
     <!-- Page Header -->
@@ -32,7 +32,7 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                 <h1 class="h3 mb-0">
                     <i class="bi bi-speedometer2 me-2"></i>Dashboard
                 </h1>
-                <p class="text-white-50 mb-0">Visão geral do sistema</p>
+                <p class="text-secondary mb-0">Visão geral do sistema</p>
             </div>
             <div class="col-auto">
                 <nav aria-label="breadcrumb">
@@ -44,52 +44,53 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
         </div>
     </div>
     
-    <!-- Welcome Message -->
-    <div class="alert alert-primary fade-in mb-4">
-        <i class="bi bi-person-circle me-2"></i>
-        <strong>Bem-vindo, <?php echo htmlspecialchars($usuario['username'] ?? 'Usuário'); ?>!</strong> 
-        Utilize o menu acima para navegar pelo sistema.
-    </div>
-    
     <!-- Stats Cards -->
     <div class="row g-4 mb-4">
         <div class="col-md-6 col-lg-3">
-            <div class="stat-card primary">
-                <div class="stat-icon-wrapper">
-                    <i class="bi bi-people stat-icon"></i>
+            <div class="stat-card">
+                <div class="stat-icon primary">
+                    <i class="bi bi-people"></i>
                 </div>
-                <div class="stat-value"><?php echo number_format($stats['total_fornecedores'], 0, ',', '.'); ?></div>
-                <div class="stat-label">Fornecedores</div>
+                <div class="stat-content">
+                    <div class="stat-value"><?php echo number_format($stats['total_fornecedores'], 0, ',', '.'); ?></div>
+                    <div class="stat-label">Fornecedores</div>
+                </div>
             </div>
         </div>
         
         <div class="col-md-6 col-lg-3">
-            <div class="stat-card success">
-                <div class="stat-icon-wrapper">
-                    <i class="bi bi-box stat-icon"></i>
+            <div class="stat-card">
+                <div class="stat-icon success">
+                    <i class="bi bi-box"></i>
                 </div>
-                <div class="stat-value"><?php echo number_format($stats['total_produtos'], 0, ',', '.'); ?></div>
-                <div class="stat-label">Produtos</div>
+                <div class="stat-content">
+                    <div class="stat-value"><?php echo number_format($stats['total_produtos'], 0, ',', '.'); ?></div>
+                    <div class="stat-label">Produtos</div>
+                </div>
             </div>
         </div>
         
         <div class="col-md-6 col-lg-3">
-            <div class="stat-card warning">
-                <div class="stat-icon-wrapper">
-                    <i class="bi bi-exclamation-triangle stat-icon"></i>
+            <div class="stat-card">
+                <div class="stat-icon warning">
+                    <i class="bi bi-exclamation-triangle"></i>
                 </div>
-                <div class="stat-value"><?php echo number_format($stats['estoque_baixo'], 0, ',', '.'); ?></div>
-                <div class="stat-label">Estoque Baixo</div>
+                <div class="stat-content">
+                    <div class="stat-value"><?php echo number_format($stats['estoque_baixo'], 0, ',', '.'); ?></div>
+                    <div class="stat-label">Estoque Baixo</div>
+                </div>
             </div>
         </div>
         
         <div class="col-md-6 col-lg-3">
-            <div class="stat-card info">
-                <div class="stat-icon-wrapper">
-                    <i class="bi bi-currency-dollar stat-icon"></i>
+            <div class="stat-card">
+                <div class="stat-icon info">
+                    <i class="bi bi-currency-dollar"></i>
                 </div>
-                <div class="stat-value"><?php echo formatar_moeda($stats['valor_estoque']); ?></div>
-                <div class="stat-label">Valor do Estoque</div>
+                <div class="stat-content">
+                    <div class="stat-value"><?php echo formatar_moeda($stats['valor_estoque']); ?></div>
+                    <div class="stat-label">Valor do Estoque</div>
+                </div>
             </div>
         </div>
     </div>
@@ -97,8 +98,8 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
     <!-- Quick Actions -->
     <div class="row g-4 mb-4">
         <div class="col-lg-4">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-white">
+            <div class="card h-100">
+                <div class="card-header">
                     <h5 class="mb-0"><i class="bi bi-lightning me-2"></i>Ações Rápidas</h5>
                 </div>
                 <div class="card-body">
@@ -109,10 +110,10 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                         <a href="<?php echo SITE_URL; ?>/fornecedores/criar.php" class="btn btn-success">
                             <i class="bi bi-person-plus me-2"></i>Novo Fornecedor
                         </a>
-                        <a href="<?php echo SITE_URL; ?>/produtos/" class="btn btn-info text-white">
+                        <a href="<?php echo SITE_URL; ?>/produtos/" class="btn" style="background-color: var(--info); color: white;">
                             <i class="bi bi-box-seam me-2"></i>Ver Produtos
                         </a>
-                        <a href="<?php echo SITE_URL; ?>/fornecedores/" class="btn btn-outline-secondary">
+                        <a href="<?php echo SITE_URL; ?>/fornecedores/" class="btn btn-secondary">
                             <i class="bi bi-people me-2"></i>Ver Fornecedores
                         </a>
                     </div>
@@ -121,15 +122,15 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
         </div>
         
         <div class="col-lg-8">
-            <div class="card h-100 border-0 shadow-sm">
-                <div class="card-header bg-white">
+            <div class="card h-100">
+                <div class="card-header">
                     <h5 class="mb-0"><i class="bi bi-bar-chart me-2"></i>Produtos por Fornecedor</h5>
                 </div>
                 <div class="card-body">
                     <?php if (empty($stats['produtos_por_fornecedor'])): ?>
                         <div class="empty-state">
-                            <i class="bi bi-inbox display-4"></i>
-                            <p class="mt-2 mb-0 text-muted">Nenhum fornecedor com produtos cadastrados.</p>
+                            <i class="bi bi-inbox"></i>
+                            <p class="mt-2 mb-0">Nenhum fornecedor com produtos cadastrados.</p>
                         </div>
                     <?php else: ?>
                         <?php foreach ($stats['produtos_por_fornecedor'] as $fornecedor): ?>
@@ -139,8 +140,8 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                                     <span class="badge bg-primary"><?php echo $fornecedor['total']; ?> produtos</span>
                                 </div>
                                 <div class="progress" style="height: 8px;">
-                                    <div class="progress-bar bg-primary" role="progressbar" 
-                                         style="width: <?php echo ($fornecedor['total'] / max($stats['total_produtos'], 1)) * 100; ?>%"
+                                    <div class="progress-bar" role="progressbar" 
+                                         style="width: <?php echo ($fornecedor['total'] / max($stats['total_produtos'], 1)) * 100; ?>%; background-color: var(--primary);"
                                          aria-valuenow="<?php echo $fornecedor['total']; ?>" 
                                          aria-valuemax="<?php echo $stats['total_produtos']; ?>"></div>
                                 </div>
@@ -155,8 +156,8 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
     <!-- Recent Data -->
     <div class="row g-4">
         <div class="col-lg-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0"><i class="bi bi-clock-history me-2"></i>Produtos Recentes</h5>
                     <a href="<?php echo SITE_URL; ?>/produtos/" class="btn btn-sm btn-outline-primary">
                         Ver todos <i class="bi bi-arrow-right ms-1"></i>
@@ -165,12 +166,12 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                 <div class="card-body p-0">
                     <?php if (empty($produtos_recentes)): ?>
                         <div class="empty-state">
-                            <i class="bi bi-box display-4"></i>
-                            <p class="mt-2 mb-0 text-muted">Nenhum produto cadastrado.</p>
+                            <i class="bi bi-box"></i>
+                            <p class="mt-2 mb-0">Nenhum produto cadastrado.</p>
                         </div>
                     <?php else: ?>
                         <div class="table-responsive">
-                            <table class="table table-hover mb-0">
+                            <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th>Produto</th>
@@ -190,7 +191,7 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                                             </td>
                                             <td><?php echo formatar_moeda($produto['preco']); ?></td>
                                             <td>
-                                                <span class="<?php echo $produto['quantidade'] <= 10 ? 'text-warning fw-bold' : ''; ?>">
+                                                <span class="<?php echo $produto['quantidade'] <= 10 ? 'fw-semibold' : ''; ?>" style="color: <?php echo $produto['quantidade'] <= 10 ? 'var(--warning)' : 'inherit'; ?>">
                                                     <?php echo $produto['quantidade']; ?>
                                                 </span>
                                             </td>
@@ -215,8 +216,8 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
         </div>
         
         <div class="col-lg-6">
-            <div class="card border-0 shadow-sm">
-                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0"><i class="bi bi-people me-2"></i>Fornecedores Recentes</h5>
                     <a href="<?php echo SITE_URL; ?>/fornecedores/" class="btn btn-sm btn-outline-primary">
                         Ver todos <i class="bi bi-arrow-right ms-1"></i>
@@ -225,12 +226,12 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                 <div class="card-body p-0">
                     <?php if (empty($fornecedores_recentes)): ?>
                         <div class="empty-state">
-                            <i class="bi bi-people display-4"></i>
-                            <p class="mt-2 mb-0 text-muted">Nenhum fornecedor cadastrado.</p>
+                            <i class="bi bi-people"></i>
+                            <p class="mt-2 mb-0">Nenhum fornecedor cadastrado.</p>
                         </div>
                     <?php else: ?>
                         <div class="table-responsive">
-                            <table class="table table-hover mb-0">
+                            <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th>Nome</th>
@@ -249,7 +250,7 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
                                             </td>
                                             <td>
                                                 <?php if ($fornecedor['email']): ?>
-                                                    <a href="mailto:<?php echo htmlspecialchars($fornecedor['email']); ?>" class="text-decoration-none">
+                                                    <a href="mailto:<?php echo htmlspecialchars($fornecedor['email']); ?>" style="text-decoration: none;">
                                                         <?php echo htmlspecialchars($fornecedor['email']); ?>
                                                     </a>
                                                 <?php else: ?>
@@ -273,4 +274,5 @@ $fornecedores_recentes = array_slice($fornecedores_recentes, 0, 5);
     </div>
 </div>
 
-<?php include_once __DIR__ . '/../includes/footer.php'; ?>
+<?php include_once __DIR__ . '/includes/footer.php'; ?>
+

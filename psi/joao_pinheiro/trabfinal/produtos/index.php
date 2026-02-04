@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                         <option value="todos">Todos os fornecedores</option>
                         <?php foreach ($fornecedores as $f): ?>
                             <option value="<?php echo $f['id']; ?>" <?php echo $fornecedor_id == $f['id'] ? 'selected' : ''; ?>>
-                                <?php echo htmlspecialchars($f['nome']); ?>
+                                <?php echo e($f['nome']); ?>
                             </option>
                         <?php endforeach; ?>
                     </select>
@@ -161,9 +161,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                                 </div>
                                             </div>
                                             <div>
-                                                <strong><?php echo htmlspecialchars($produto['nome']); ?></strong>
+                                                <strong><?php echo e($produto['nome']); ?></strong>
                                                 <?php if ($produto['categoria']): ?>
-                                                    <br><small class="text-muted"><?php echo htmlspecialchars($produto['categoria']); ?></small>
+                                                    <br><small class="text-muted"><?php echo e($produto['categoria']); ?></small>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -176,7 +176,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                             <span class="<?php echo $produto['quantidade'] <= 10 ? 'text-warning fw-bold' : ''; ?>">
                                                 <?php echo number_format($produto['quantidade'], 0, ',', '.'); ?>
                                             </span>
-                                            <span class="text-muted ms-1 small"><?php echo $produto['unidade']; ?></span>
+                                            <span class="text-muted ms-1 small"><?php echo e($produto['unidade']); ?></span>
                                             <?php if ($produto['quantidade'] <= 10): ?>
                                                 <i class="bi bi-exclamation-triangle text-warning ms-2" title="Estoque baixo"></i>
                                             <?php endif; ?>
@@ -185,7 +185,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                     <td>
                                         <?php if ($produto['fornecedor_nome']): ?>
                                             <a href="<?php echo SITE_URL; ?>/fornecedores/editar.php?id=<?php echo $produto['fornecedor_id']; ?>" class="text-decoration-none">
-                                                <?php echo htmlspecialchars($produto['fornecedor_nome']); ?>
+                                                <?php echo e($produto['fornecedor_nome']); ?>
                                             </a>
                                         <?php else: ?>
                                             <span class="text-muted">-</span>
@@ -218,40 +218,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['excluir'])) {
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </div>
-                                        
-                </div>
-                
-                <!-- Modal de Exclusão -->
-                <div class="modal fade" id="excluirModal<?php echo $produto['id']; ?>" tabindex="-1" aria-labelledby="excluirModalLabel<?php echo $produto['id']; ?>" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="excluirModalLabel<?php echo $produto['id']; ?>">
-                                    <i class="bi bi-exclamation-triangle text-danger me-2"></i>Confirmar Exclusão
-                                </h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Tem certeza que deseja excluir o produto <strong><?php echo htmlspecialchars($produto['nome']); ?></strong>?</p>
-                                <p class="text-muted mb-0">Esta ação não pode ser desfeita.</p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                    <i class="bi bi-x-lg me-1"></i>Cancelar
-                                </button>
-                                <form method="POST" class="d-inline">
-                                    <input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
-                                    <input type="hidden" name="excluir" value="1">
-                                    <button type="submit" class="btn btn-danger">
-                                        <i class="bi bi-trash me-1"></i>Confirmar Exclusão
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                                     </td>
                                 </tr>
+                                
+                                <!-- Modal de Exclusão -->
+                                <div class="modal fade" id="excluirModal<?php echo $produto['id']; ?>" tabindex="-1" aria-labelledby="excluirModalLabel<?php echo $produto['id']; ?>" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="excluirModalLabel<?php echo $produto['id']; ?>">
+                                                    <i class="bi bi-exclamation-triangle text-danger me-2"></i>Confirmar Exclusão
+                                                </h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Tem certeza que deseja excluir o produto <strong><?php echo e($produto['nome']); ?></strong>?</p>
+                                                <p class="text-muted mb-0">Esta ação não pode ser desfeita.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="bi bi-x-lg me-1"></i>Cancelar
+                                                </button>
+                                                <form method="POST" class="d-inline">
+                                                    <input type="hidden" name="id" value="<?php echo $produto['id']; ?>">
+                                                    <input type="hidden" name="excluir" value="1">
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <i class="bi bi-trash me-1"></i>Confirmar Exclusão
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             <?php endforeach; ?>
                         </tbody>
                     </table>

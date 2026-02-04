@@ -15,7 +15,7 @@ if (!esta_logado()) {
 $titulo_pagina = 'Novo Produto';
 $erro = '';
 
-// Gerar token CSRF
+// Gerar token CSRF apenas se não existir
 if (empty($_SESSION['csrf_token'])) {
     $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
@@ -25,11 +25,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
         $erro = 'Erro de validação. Por favor, tente novamente.';
     } else {
+        $preco_str = $_POST['preco'] ?? '0';
+        $preco_str = str_replace(['.', ','], ['', '.'], $preco_str);
+        
         $dados = [
             'nome' => sanitizar($_POST['nome'] ?? ''),
             'categoria' => sanitizar($_POST['categoria'] ?? ''),
             'descricao' => sanitizar($_POST['descricao'] ?? ''),
-            'preco' => floatval(str_replace(',', '.', str_replace('.', '', $_POST['preco'] ?? 0))),
+            'preco' => floatval($preco_str),
             'quantidade' => intval($_POST['quantidade'] ?? 0),
             'unidade' => sanitizar($_POST['unidade'] ?? 'un'),
             'fornecedor_id' => !empty($_POST['fornecedor_id']) ? intval($_POST['fornecedor_id']) : null,
@@ -51,9 +54,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $erro = 'Erro ao criar produto. Por favor, tente novamente.';
             }
         }
-        
-        // Regenerar token CSRF após submissão
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
     }
 }
 
@@ -107,7 +107,7 @@ $fornecedores = obter_fornecedores_select();
                         </label>
                         <input type="text" class="form-control" id="nome" name="nome" 
                                placeholder="Digite o nome do produto" required 
-                               value="<?php echo htmlspecialchars($dados['nome'] ?? ''); ?>">
+                               value="<?php echo e($dados['nome'] ?? ''); ?>">
                     </div>
                     
                     <!-- Categoria -->
@@ -117,7 +117,7 @@ $fornecedores = obter_fornecedores_select();
                         </label>
                         <input type="text" class="form-control" id="categoria" name="categoria" 
                                placeholder="Ex: Eletrônicos"
-                               value="<?php echo htmlspecialchars($dados['categoria'] ?? ''); ?>">
+                               value="<?php echo e($dados['categoria'] ?? ''); ?>">
                     </div>
                     
                     <!-- Fornecedor -->
@@ -129,7 +129,7 @@ $fornecedores = obter_fornecedores_select();
                             <option value="">Nenhum</option>
                             <?php foreach ($fornecedores as $f): ?>
                                 <option value="<?php echo $f['id']; ?>" <?php echo ($dados['fornecedor_id'] ?? '') == $f['id'] ? 'selected' : ''; ?>>
-                                    <?php echo htmlspecialchars($f['nome']); ?>
+                                    <?php echo e($f['nome']); ?>
                                 </option>
                             <?php endforeach; ?>
                         </select>
@@ -144,7 +144,7 @@ $fornecedores = obter_fornecedores_select();
                             <span class="input-group-text">R$</span>
                             <input type="text" class="form-control" id="preco" name="preco" 
                                    placeholder="0,00" required
-                                   value="<?php echo number_format($dados['preco'] ?? 0, 2, ',', ''); ?>">
+                                   value="<?php echo isset($dados['preco']) ? number_format($dados['preco'], 2, ',', '') : '0,00'; ?>">
                         </div>
                     </div>
                     
@@ -185,7 +185,7 @@ $fornecedores = obter_fornecedores_select();
                             <i class="bi bi-text-paragraph me-1"></i>Descrição
                         </label>
                         <textarea class="form-control" id="descricao" name="descricao" rows="4" 
-                                  placeholder="Descrição detalhada do produto..."><?php echo htmlspecialchars($dados['descricao'] ?? ''); ?></textarea>
+                                  placeholder="Descrição detalhada do produto..."><?php echo e($dados['descricao'] ?? ''); ?></textarea>
                     </div>
                     
                     <!-- Status -->
